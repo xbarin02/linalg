@@ -70,7 +70,7 @@ public:
 		return size;
 	}
 
-	Vector operator+(const Vector &v)
+	Vector operator+(const Vector &v) const
 	{
 		Vector copy(*this);
 
@@ -88,7 +88,7 @@ public:
 		return *this;
 	}
 
-	Vector operator-(const Vector &v)
+	Vector operator-(const Vector &v) const
 	{
 		Vector copy(*this);
 
@@ -106,7 +106,7 @@ public:
 		return *this;
 	}
 
-	Vector operator*(T a)
+	Vector operator*(T a) const
 	{
 		Vector copy(*this);
 
@@ -124,7 +124,7 @@ public:
 		return *this;
 	}
 
-	Vector operator/(T a)
+	Vector operator/(T a) const
 	{
 		Vector copy(*this);
 
@@ -142,7 +142,7 @@ public:
 		return *this;
 	}
 
-	Vector operator-()
+	Vector operator-() const
 	{
 		Vector copy(*this);
 
@@ -151,7 +151,7 @@ public:
 		return copy;
 	}
 
-	Vector operator+()
+	Vector operator+() const
 	{
 		return *this;
 	}
