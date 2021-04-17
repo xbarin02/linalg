@@ -40,6 +40,12 @@ public:
 		vector = v.vector;
 	}
 
+	Vector(std::initializer_list<T> l)
+		: vector(l)
+	{
+		size = vector.size();
+	}
+
 	friend void swap(Vector &first, Vector &second)
 	{
 		using std::swap;

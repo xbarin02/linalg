@@ -48,5 +48,8 @@ int main()
 	std::cout << (v * w) << "\n";
 	std::cout << v.length() << "\n";
 
+	Vector<float> a = { 6, -2 };
+	std::cout << a << "\n";
+
 	return 0;
 }
