@@ -34,6 +34,14 @@ public:
 		vector.resize(size);
 	}
 
+	Vector(const Vector &v)
+		: size(v.size)
+	{
+		vector = v.vector;
+	}
+
+	Vector& operator=(const Vector&) = default;
+
 	friend std::ostream& operator<< <>(std::ostream& os, const Vector& v);
 
 	const T& operator[](std::size_t n) const
