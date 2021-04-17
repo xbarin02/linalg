@@ -35,16 +35,12 @@ public:
 	}
 
 	Vector(const Vector &v)
-		: size(v.size)
-	{
-		vector = v.vector;
-	}
+		: size(v.size), vector(v.vector)
+	{}
 
 	Vector(std::initializer_list<T> l)
-		: vector(l)
-	{
-		size = vector.size();
-	}
+		: size(l.size()), vector(l)
+	{}
 
 	friend void swap(Vector &first, Vector &second)
 	{
