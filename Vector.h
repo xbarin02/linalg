@@ -65,11 +65,6 @@ public:
 		return vector[n];
 	}
 
-	std::size_t dim() const
-	{
-		return size;
-	}
-
 	Vector operator+(const Vector &v) const
 	{
 		Vector copy(*this);
@@ -172,6 +167,11 @@ public:
 		}
 
 		return s;
+	}
+
+	std::size_t dim() const
+	{
+		return size;
 	}
 
 	// ||a|| = sqrt(a_i^2 + ... a_n^2) = sqrt(dot(a, a))
