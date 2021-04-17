@@ -49,7 +49,9 @@ int main()
 	std::cout << v.length() << "\n";
 
 	Vector<float> a = { 6, -2 };
-	std::cout << a << "\n";
+	Vector<float> b = { -4, 4 };
+	std::cout << (a + b) << "\n";
+	std::cout << (b + a) << "\n"; // BUG
 
 	return 0;
 }
