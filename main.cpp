@@ -58,5 +58,9 @@ int main()
 	std::cout << (c * d) << "\n";
 	std::cout << c.length() << "\n";
 
+	Vector<float> e = { 2, 2 };
+	Vector<float> f = { 2, 0 };
+	std::cout << e.angle(f) << "\n";
+
 	return 0;
 }

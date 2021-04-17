@@ -186,6 +186,14 @@ public:
 
 		return std::sqrt(s);
 	}
+
+	T angle(const Vector &v) const
+	{
+		const Vector &a = *this;
+		const Vector &b = v;
+
+		return std::acos((a * b) / a.length() / b.length());
+	}
 };
 
 }
