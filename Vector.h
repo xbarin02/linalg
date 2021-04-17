@@ -40,7 +40,20 @@ public:
 		vector = v.vector;
 	}
 
-	Vector& operator=(const Vector&) = default;
+	friend void swap(Vector &first, Vector &second)
+	{
+		using std::swap;
+
+		swap(first.size, second.size);
+		swap(first.vector, second.vector);
+	}
+
+	Vector& operator=(Vector v)
+	{
+		swap(*this, v);
+
+		return *this;
+	}
 
 	friend std::ostream& operator<< <>(std::ostream& os, const Vector& v);
 
