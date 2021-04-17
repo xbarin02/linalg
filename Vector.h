@@ -21,8 +21,13 @@ private:
 	// dimensions
 	std::size_t size;
 	std::vector<T> vector;
-	Vector();
 public:
+	Vector()
+		: size(0)
+	{
+		vector.resize(0);
+	}
+
 	Vector(std::size_t size)
 		: size(size)
 	{

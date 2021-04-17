@@ -15,7 +15,8 @@ int main()
 
 	std::cout << v << "\n";
 
-	Vector<float> w(v);
+	Vector<float> w;
+	std::cout << w << "\n";
 
 	w = v;
 
