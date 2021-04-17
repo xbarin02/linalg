@@ -72,9 +72,11 @@ public:
 
 	Vector operator+(const Vector &v)
 	{
-		*this += v;
+		Vector copy(*this);
 
-		return *this;
+		copy += v;
+
+		return copy;
 	}
 
 	Vector& operator+=(const Vector &v)
@@ -88,9 +90,11 @@ public:
 
 	Vector operator-(const Vector &v)
 	{
-		*this -= v;
+		Vector copy(*this);
 
-		return *this;
+		copy -= v;
+
+		return copy;
 	}
 
 	Vector& operator-=(const Vector &v)
@@ -104,9 +108,11 @@ public:
 
 	Vector operator*(T a)
 	{
-		*this *= a;
+		Vector copy(*this);
 
-		return *this;
+		copy *= a;
+
+		return copy;
 	}
 
 	Vector& operator*=(T a)
@@ -120,9 +126,11 @@ public:
 
 	Vector operator/(T a)
 	{
-		*this /= a;
+		Vector copy(*this);
 
-		return *this;
+		copy /= a;
+
+		return copy;
 	}
 
 	Vector& operator/=(T a)
@@ -136,11 +144,11 @@ public:
 
 	Vector operator-()
 	{
-		Vector v(*this);
+		Vector copy(*this);
 
-		v *= -1;
+		copy *= -1;
 
-		return v;
+		return copy;
 	}
 
 	Vector operator+()

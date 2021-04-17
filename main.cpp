@@ -51,7 +51,7 @@ int main()
 	Vector<float> a = { 6, -2 };
 	Vector<float> b = { -4, 4 };
 	std::cout << (a + b) << "\n";
-	std::cout << (b + a) << "\n"; // BUG
+	std::cout << (b + a) << "\n";
 
 	return 0;
 }
