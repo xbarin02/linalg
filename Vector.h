@@ -23,16 +23,12 @@ private:
 	std::vector<T> vector;
 public:
 	Vector()
-		: size(0)
-	{
-		vector.resize(0);
-	}
+		: size(0), vector(0)
+	{}
 
 	Vector(std::size_t size)
-		: size(size)
-	{
-		vector.resize(size);
-	}
+		: size(size), vector(size)
+	{}
 
 	Vector(const Vector &v)
 		: size(v.size), vector(v.vector)
