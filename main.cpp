@@ -53,5 +53,10 @@ int main()
 	std::cout << (a + b) << "\n";
 	std::cout << (b + a) << "\n";
 
+	Vector<float> c = { 2, 5 };
+	Vector<float> d = { 7, 1 };
+	std::cout << (c * d) << "\n";
+	std::cout << c.length() << "\n";
+
 	return 0;
 }
