@@ -1,4 +1,5 @@
 #include "Vector.h"
+#include "Matrix.h"
 
 #include <ostream>
 
@@ -61,6 +62,11 @@ int main()
 	Vector<float> e = { 2, 2 };
 	Vector<float> f = { 2, 0 };
 	std::cout << e.angle(f) << "\n";
+
+	Matrix<Vector<float>> M;
+
+	M.addColumnVector(e);
+	M.addColumnVector(f);
 
 	return 0;
 }

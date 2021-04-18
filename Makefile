@@ -6,7 +6,7 @@ BIN=main
 .PHONY: all
 all: $(BIN)
 
-main.o: main.cpp Vector.h
+main.o: main.cpp Vector.h Matrix.h
 
 .PHONY: clean
 clean:

@@ -1,3 +1,6 @@
+#ifndef VECTOR_H
+#define VECTOR_H
+
 #include <vector>
 #include <iostream>
 #include <cmath>
@@ -223,3 +226,5 @@ LinAlg::Vector<T> operator*(T a, const LinAlg::Vector<T>& v)
 
 	return w * a;
 }
+
+#endif
