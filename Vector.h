@@ -209,7 +209,7 @@ std::ostream& operator<<(std::ostream& os, const LinAlg::Vector<T>& v)
 	for (std::size_t n = 0; n < v.size; ++n) {
 		os << v.vector[n];
 
-		if (n != v.size - 1) {
+		if (n + 1 != v.size) {
 			os << ", ";
 		}
 	}
