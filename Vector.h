@@ -10,12 +10,8 @@ namespace LinAlg {
 template <typename T>
 class Vector;
 
-}
-
 template <typename T>
 std::ostream& operator<<(std::ostream& os, const LinAlg::Vector<T>& v);
-
-namespace LinAlg {
 
 template <typename T>
 class Vector
@@ -199,8 +195,6 @@ public:
 	}
 };
 
-}
-
 template <typename T>
 std::ostream& operator<<(std::ostream& os, const LinAlg::Vector<T>& v)
 {
@@ -217,6 +211,8 @@ std::ostream& operator<<(std::ostream& os, const LinAlg::Vector<T>& v)
 	os << ")";
 
 	return os;
+}
+
 }
 
 template <typename T>
