@@ -28,6 +28,22 @@ public:
 		: cols(v.cols), rows(v.rows), column(v.column)
 	{}
 
+	friend void swap(Matrix &first, Matrix &second)
+	{
+		using std::swap;
+
+		swap(first.cols, second.cols);
+		swap(first.rows, second.rows);
+		swap(first.column, second.column);
+	}
+
+	Matrix& operator=(Matrix v)
+	{
+		swap(*this, v);
+
+		return *this;
+	}
+
 	friend std::ostream& operator<< <>(std::ostream& os, const Matrix& m);
 
 	void addColumnVector(const T &v)
