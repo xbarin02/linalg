@@ -44,7 +44,25 @@ public:
 		return *this;
 	}
 
-	friend std::ostream& operator<< <>(std::ostream& os, const Matrix& m);
+	friend std::ostream& operator<<(std::ostream& os, const Matrix& m)
+	{
+		for (std::size_t r = 0; r < m.rows; ++r) {
+			os << "[ ";
+
+			for (std::size_t c = 0; c < m.cols; ++c) {
+
+				os << m.column[c][r];
+
+				if (c + 1 != m.cols) {
+					os << ", ";
+				}
+			}
+
+			os << " ]\n";
+		}
+
+		return os;
+	}
 
 	void addColumnVector(const T &v)
 	{
@@ -64,27 +82,6 @@ public:
 		}
 	}
 };
-
-template <typename T>
-std::ostream& operator<<(std::ostream& os, const LinAlg::Matrix<T>& m)
-{
-	for (std::size_t r = 0; r < m.rows; ++r) {
-		os << "[ ";
-
-		for (std::size_t c = 0; c < m.cols; ++c) {
-
-			os << m.column[c][r];
-
-			if (c + 1 != m.cols) {
-				os << ", ";
-			}
-		}
-
-		os << " ]\n";
-	}
-
-	return os;
-}
 
 }
 

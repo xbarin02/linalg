@@ -52,7 +52,22 @@ public:
 		return *this;
 	}
 
-	friend std::ostream& operator<< <>(std::ostream& os, const Vector& v);
+	friend std::ostream& operator<<(std::ostream& os, const Vector& v)
+	{
+		os << "Vector(";
+
+		for (std::size_t n = 0; n < v.size; ++n) {
+			os << v.vector[n];
+
+			if (n + 1 != v.size) {
+				os << ", ";
+			}
+		}
+
+		os << ")";
+
+		return os;
+	}
 
 	const T& operator[](std::size_t n) const
 	{
@@ -194,24 +209,6 @@ public:
 		return std::acos((a * b) / a.length() / b.length());
 	}
 };
-
-template <typename T>
-std::ostream& operator<<(std::ostream& os, const LinAlg::Vector<T>& v)
-{
-	os << "Vector(";
-
-	for (std::size_t n = 0; n < v.size; ++n) {
-		os << v.vector[n];
-
-		if (n + 1 != v.size) {
-			os << ", ";
-		}
-	}
-	
-	os << ")";
-
-	return os;
-}
 
 }
 
