@@ -8,12 +8,6 @@
 namespace LinAlg {
 
 template <typename T>
-class Vector;
-
-template <typename T>
-std::ostream& operator<<(std::ostream& os, const LinAlg::Vector<T>& v);
-
-template <typename T>
 class Vector
 {
 private:
