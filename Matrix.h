@@ -86,6 +86,17 @@ public:
 
 		return v;
 	}
+
+	Matrix getTranspose() const
+	{
+		Matrix m;
+
+		for (std::size_t r = 0; r < rows; ++r) {
+			m.addColumnVector(getRowVector(r));
+		}
+
+		return m;
+	}
 };
 
 }

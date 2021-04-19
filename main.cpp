@@ -78,6 +78,7 @@ int main()
 
 	std::cout << N << "\n";
 	std::cout << N.getRowVector(2) << "\n";
+	std::cout << N.getTranspose() << "\n";
 
 	return 0;
 }
