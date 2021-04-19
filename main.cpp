@@ -77,6 +77,7 @@ int main()
 	N.addColumnVector( Vector<float>{8, 0, 8} );
 
 	std::cout << N << "\n";
+	std::cout << N.getRowVector(2) << "\n";
 
 	return 0;
 }

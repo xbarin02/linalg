@@ -75,6 +75,17 @@ public:
 			}
 		}
 	}
+
+	T getRowVector(std::size_t r) const
+	{
+		T v(cols);
+
+		for (std::size_t c = 0; c < cols; ++c) {
+			v[c] = column[c][r];
+		}
+
+		return v;
+	}
 };
 
 }
