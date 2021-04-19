@@ -7,6 +7,12 @@
 namespace LinAlg {
 
 template <typename T>
+class Matrix;
+
+template <typename T>
+std::ostream& operator<<(std::ostream& os, const LinAlg::Matrix<T>& m);
+
+template <typename T>
 class Matrix
 {
 private:
@@ -21,6 +27,8 @@ public:
 	Matrix(const Matrix &v)
 		: cols(v.cols), rows(v.rows), column(v.column)
 	{}
+
+	friend std::ostream& operator<< <>(std::ostream& os, const Matrix& m);
 
 	void addColumnVector(const T &v)
 	{
@@ -40,6 +48,27 @@ public:
 		}
 	}
 };
+
+template <typename T>
+std::ostream& operator<<(std::ostream& os, const LinAlg::Matrix<T>& m)
+{
+	for (std::size_t r = 0; r < m.rows; ++r) {
+		os << "[ ";
+
+		for (std::size_t c = 0; c < m.cols; ++c) {
+
+			os << m.column[c][r];
+
+			if (c + 1 != m.cols) {
+				os << ", ";
+			}
+		}
+
+		os << " ]\n";
+	}
+
+	return os;
+}
 
 }
 

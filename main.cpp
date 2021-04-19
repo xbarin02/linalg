@@ -65,8 +65,10 @@ int main()
 
 	Matrix<Vector<float>> M;
 
-	M.addColumnVector(e);
-	M.addColumnVector(f);
+	M.addColumnVector(a);
+	M.addColumnVector(b);
+
+	std::cout << M << "\n";
 
 	return 0;
 }
