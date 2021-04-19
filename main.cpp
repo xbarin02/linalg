@@ -70,5 +70,13 @@ int main()
 
 	std::cout << M << "\n";
 
+	Matrix<Vector<float>> N;
+
+	N.addColumnVector( Vector<float>{3, 6, 6} );
+	N.addColumnVector( Vector<float>{1, 3, 8} );
+	N.addColumnVector( Vector<float>{8, 0, 8} );
+
+	std::cout << N << "\n";
+
 	return 0;
 }
