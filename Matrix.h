@@ -209,6 +209,25 @@ public:
 
 		return *this;
 	}
+
+	static Matrix identity(std::size_t dim)
+	{
+		Vector<T> v(dim);
+
+		for (std::size_t n = 0; n < dim; ++n) {
+			v[n] = 0;
+		}
+
+		Matrix m;
+
+		for (std::size_t n = 0; n < dim; ++n) {
+			v[n] = 1;
+			m.addColumnVector(v);
+			v[n] = 0;
+		}
+
+		return m;
+	}
 };
 
 }

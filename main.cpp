@@ -105,5 +105,7 @@ int main()
 
 	std::cout << (B + C) << "\n";
 
+	std::cout << Matrix<float>::identity(4) << "\n";
+
 	return 0;
 }
