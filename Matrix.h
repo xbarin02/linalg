@@ -87,12 +87,45 @@ public:
 		return v;
 	}
 
+	const T &getColumnVector(std::size_t c) const
+	{
+		return column[c];
+	}
+
 	Matrix getTranspose() const
 	{
 		Matrix m;
 
 		for (std::size_t r = 0; r < rows; ++r) {
 			m.addColumnVector(getRowVector(r));
+		}
+
+		return m;
+	}
+
+	// returns submatrix created by eliminating r-th row and c-th column
+	Matrix getSubMatrix(std::size_t r, std::size_t c) const
+	{
+		Matrix m;
+
+		// for each column vector except c-th one
+		for (std::size_t cc = 0; cc < cols; ++cc) {
+			if (cc == c) {
+				continue;
+			}
+			// getColumnVector()
+			const T &v = getColumnVector(cc);
+			// create subvector by eliminating r-th element
+			T vv(rows - 1);
+			std::size_t i = 0;
+			for (std::size_t rr = 0; rr < rows; ++rr) {
+				if (rr == r) {
+					continue;
+				}
+				vv[i++] = v[rr];
+			}
+			// addColumnVector()
+			m.addColumnVector(vv);
 		}
 
 		return m;

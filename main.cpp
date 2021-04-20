@@ -80,5 +80,7 @@ int main()
 	std::cout << N.getRowVector(2) << "\n";
 	std::cout << N.getTranspose() << "\n";
 
+	std::cout << N.getSubMatrix(0, 1) << "\n";
+
 	return 0;
 }
