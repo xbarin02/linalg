@@ -92,11 +92,18 @@ int main()
 	A.addColumnVector(Vector<float>{1, 4, 7});
 	A.addColumnVector(Vector<float>{2, 5, 8});
 	A.addColumnVector(Vector<float>{3, 6, 9});
+
 	Matrix<float> B;
 	B.addColumnVector(Vector<float>{4, 1, 3});
 	B.addColumnVector(Vector<float>{2, 7, 2});
 
 	std::cout << (A * B) << "\n";
+
+	Matrix<float> C;
+	C.addColumnVector(Vector<float>{7, 5, 3});
+	C.addColumnVector(Vector<float>{6, 4, 2});
+
+	std::cout << (B + C) << "\n";
 
 	return 0;
 }

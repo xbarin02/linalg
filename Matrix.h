@@ -93,6 +93,11 @@ public:
 		return column[c];
 	}
 
+	Vector<T> &getColumnVector(std::size_t c)
+	{
+		return column[c];
+	}
+
 	Matrix getTranspose() const
 	{
 		Matrix m;
@@ -174,6 +179,28 @@ public:
 		}
 
 		return result;
+	}
+
+	Matrix operator+(const Matrix &v) const
+	{
+		Matrix copy(*this);
+
+		copy += v;
+
+		return copy;
+	}
+
+	Matrix& operator+=(const Matrix &m)
+	{
+		if (cols != m.cols || rows != m.rows) {
+			throw std::domain_error("matrix dimensions must agree");
+		}
+
+		for (std::size_t c = 0; c < cols; ++c) {
+			getColumnVector(c) += m.getColumnVector(c);
+		}
+
+		return *this;
 	}
 };
 

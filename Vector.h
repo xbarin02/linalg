@@ -87,7 +87,7 @@ public:
 	Vector& operator+=(const Vector &v)
 	{
 		if (size != v.size) {
-			throw std::domain_error("vector dimensions must be the same");
+			throw std::domain_error("vector dimensions must agree");
 		}
 
 		for (std::size_t n = 0; n < size; ++n) {
@@ -109,7 +109,7 @@ public:
 	Vector& operator-=(const Vector &v)
 	{
 		if (size != v.size) {
-			throw std::domain_error("vector dimensions must be the same");
+			throw std::domain_error("vector dimensions must agree");
 		}
 
 		for (std::size_t n = 0; n < size; ++n) {
@@ -179,7 +179,7 @@ public:
 	T operator*=(const Vector &v) const
 	{
 		if (size != v.size) {
-			throw std::domain_error("vector dimensions must be the same");
+			throw std::domain_error("vector dimensions must agree");
 		}
 
 		T s = 0;
