@@ -88,5 +88,15 @@ int main()
 	Vector<float> v2 = { 4, 1, 5 };
 	std::cout << (v1 * v2) << "\n";
 
+	Matrix<float> A;
+	A.addColumnVector(Vector<float>{1, 4, 7});
+	A.addColumnVector(Vector<float>{2, 5, 8});
+	A.addColumnVector(Vector<float>{3, 6, 9});
+	Matrix<float> B;
+	B.addColumnVector(Vector<float>{4, 1, 3});
+	B.addColumnVector(Vector<float>{2, 7, 2});
+
+	std::cout << (A * B) << "\n";
+
 	return 0;
 }
