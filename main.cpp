@@ -63,14 +63,14 @@ int main()
 	Vector<float> f = { 2, 0 };
 	std::cout << e.angle(f) << "\n";
 
-	Matrix<Vector<float>> M;
+	Matrix<float> M;
 
 	M.addColumnVector(a);
 	M.addColumnVector(b);
 
 	std::cout << M << "\n";
 
-	Matrix<Vector<float>> N;
+	Matrix<float> N;
 
 	N.addColumnVector( Vector<float>{3, 6, 6} );
 	N.addColumnVector( Vector<float>{1, 3, 8} );

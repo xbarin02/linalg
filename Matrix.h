@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <stdexcept>
+#include "Vector.h"
 
 namespace LinAlg {
 
@@ -12,7 +13,7 @@ class Matrix
 private:
 	// columns
 	std::size_t cols, rows;
-	std::vector<T> column;
+	std::vector<Vector<T>> column;
 public:
 	Matrix()
 		: cols(0), rows(0), column(0)
@@ -58,7 +59,7 @@ public:
 		return os;
 	}
 
-	void addColumnVector(const T &v)
+	void addColumnVector(const Vector<T> &v)
 	{
 		if (cols == 0) {
 			// add anything
@@ -76,9 +77,9 @@ public:
 		}
 	}
 
-	T getRowVector(std::size_t r) const
+	Vector<T> getRowVector(std::size_t r) const
 	{
-		T v(cols);
+		Vector<T> v(cols);
 
 		for (std::size_t c = 0; c < cols; ++c) {
 			v[c] = column[c][r];
@@ -87,7 +88,7 @@ public:
 		return v;
 	}
 
-	const T &getColumnVector(std::size_t c) const
+	const Vector<T> &getColumnVector(std::size_t c) const
 	{
 		return column[c];
 	}
@@ -114,9 +115,9 @@ public:
 				continue;
 			}
 			// getColumnVector()
-			const T &v = getColumnVector(cc);
+			const Vector<T> &v = getColumnVector(cc);
 			// create subvector by eliminating r-th element
-			T vv(rows - 1);
+			Vector<T> vv(rows - 1);
 			std::size_t i = 0;
 			for (std::size_t rr = 0; rr < rows; ++rr) {
 				if (rr == r) {
@@ -131,7 +132,7 @@ public:
 		return m;
 	}
 
-	typename T::type det() const
+	T det() const
 	{
 		if (cols != rows) {
 			throw std::domain_error("matrix must be square");
@@ -143,9 +144,9 @@ public:
 		}
 
 		// expansion by 0-th row and c-th column
-		typename T::type sum = 0;
+		T sum = 0;
 		for (std::size_t c = 0; c < cols; ++c) {
-			typename T::type a = getSubMatrix(0, c).det() * column[c][0];
+			T a = getSubMatrix(0, c).det() * column[c][0];
 			if (c % 2 == 0) {
 				sum += a;
 			} else {
