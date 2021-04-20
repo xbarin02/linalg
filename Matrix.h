@@ -156,6 +156,25 @@ public:
 
 		return sum;
 	}
+
+	// matrix-matrix product
+	Matrix operator*(const Matrix &right) const
+	{
+		Matrix result;
+		Matrix leftTransposed = getTranspose();
+
+		for (std::size_t c = 0; c < right.cols; ++c) {
+			Vector<T> v(cols);
+
+			for (std::size_t r = 0; r < cols; ++r) {
+				v[r] = leftTransposed.getColumnVector(r) * right.getColumnVector(c);
+			}
+
+			result.addColumnVector(v);
+		}
+
+		return result;
+	}
 };
 
 }
