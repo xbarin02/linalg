@@ -15,6 +15,8 @@ private:
 	std::size_t size;
 	std::vector<T> vector;
 public:
+	typedef T type;
+
 	Vector()
 		: size(0), vector(0)
 	{}

@@ -82,5 +82,7 @@ int main()
 
 	std::cout << N.getSubMatrix(0, 1) << "\n";
 
+	std::cout << N.det() << "\n";
+
 	return 0;
 }

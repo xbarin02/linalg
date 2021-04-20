@@ -130,6 +130,31 @@ public:
 
 		return m;
 	}
+
+	typename T::type det() const
+	{
+		if (cols != rows) {
+			throw std::domain_error("matrix must be square");
+		}
+
+		// end recursion
+		if (cols == 1) {
+			return column[0][0];
+		}
+
+		// expansion by 0-th row and c-th column
+		typename T::type sum = 0;
+		for (std::size_t c = 0; c < cols; ++c) {
+			typename T::type a = getSubMatrix(0, c).det() * column[c][0];
+			if (c % 2 == 0) {
+				sum += a;
+			} else {
+				sum -= a;
+			}
+		}
+
+		return sum;
+	}
 };
 
 }
