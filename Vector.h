@@ -86,6 +86,10 @@ public:
 
 	Vector& operator+=(const Vector &v)
 	{
+		if (size != v.size) {
+			throw std::domain_error("vector dimensions must be the same");
+		}
+
 		for (std::size_t n = 0; n < size; ++n) {
 			vector[n] += v.vector[n];
 		}
@@ -104,6 +108,10 @@ public:
 
 	Vector& operator-=(const Vector &v)
 	{
+		if (size != v.size) {
+			throw std::domain_error("vector dimensions must be the same");
+		}
+
 		for (std::size_t n = 0; n < size; ++n) {
 			vector[n] -= v.vector[n];
 		}
