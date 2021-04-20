@@ -84,5 +84,9 @@ int main()
 
 	std::cout << N.det() << "\n";
 
+	Vector<float> v1 = { 6, -2, 4 };
+	Vector<float> v2 = { 4, 1, 5 };
+	std::cout << (v1 * v2) << "\n";
+
 	return 0;
 }

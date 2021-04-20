@@ -170,6 +170,10 @@ public:
 	// dot
 	T operator*=(const Vector &v) const
 	{
+		if (size != v.size) {
+			throw std::domain_error("vector dimensions must be the same");
+		}
+
 		T s = 0;
 
 		for (std::size_t n = 0; n < size; ++n) {
