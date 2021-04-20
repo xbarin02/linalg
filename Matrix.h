@@ -181,6 +181,13 @@ public:
 		return result;
 	}
 
+	Matrix& operator*=(const Matrix &m)
+	{
+		*this = *this * m;
+
+		return *this;
+	}
+
 	Matrix operator+(const Matrix &v) const
 	{
 		Matrix copy(*this);
