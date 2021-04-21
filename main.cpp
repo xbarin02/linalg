@@ -109,6 +109,7 @@ int main()
 
 	std::cout << A << "\n";
 	A.swapRowVectors(0, 2);
+	A.addVectorToRow(1, Vector<float>{2, 1, 0});
 	std::cout << A << "\n";
 
 	return 0;
