@@ -156,7 +156,8 @@ public:
 			for (i = 0; i < rows; ++i) {
 				if (i != r) {
 					T factor = column[lead][i];
-					subVectorFromRow(i, getRowVector(r) * factor); // FIXME: explicitly set zero?
+					subVectorFromRow(i, getRowVector(r) * factor);
+					// FIXME: explicitly set zero?
 					column[lead][i] = 0; // HACK
 				}
 			} /* end for */
