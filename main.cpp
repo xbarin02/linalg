@@ -107,5 +107,9 @@ int main()
 
 	std::cout << Matrix<float>::identity(4) << "\n";
 
+	std::cout << A << "\n";
+	A.swapRowVectors(0, 2);
+	std::cout << A << "\n";
+
 	return 0;
 }

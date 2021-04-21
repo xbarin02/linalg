@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <stdexcept>
+#include <utility>
 #include "Vector.h"
 
 namespace LinAlg {
@@ -86,6 +87,13 @@ public:
 		}
 
 		return v;
+	}
+
+	void swapRowVectors(std::size_t r0, std::size_t r1)
+	{
+		for (std::size_t c = 0; c < cols; ++c) {
+			std::swap(column[c][r0], column[c][r1]);
+		}
 	}
 
 	const Vector<T> &getColumnVector(std::size_t c) const
