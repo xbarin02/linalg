@@ -121,5 +121,15 @@ int main()
 	D.toRref();
 	std::cout << D << "\n";
 
+	Matrix<float> E;
+	E.addColumnVector(Vector<float>{0, 0, 0, 0});
+	E.addColumnVector(Vector<float>{1, 2, 3, 4});
+	E.addColumnVector(Vector<float>{5, 6, 7, 5});
+	E.addColumnVector(Vector<float>{5, 6, 8, 5});
+	E = E.getTranspose();
+	E.toRref();
+	std::cout << E << "\n";
+
+
 	return 0;
 }
