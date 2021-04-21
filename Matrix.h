@@ -152,13 +152,13 @@ public:
 			T factor = column[lead][r];
 			mulRowVector(r, 1/factor);
 			// FIXME: explicitly set column[lead][r] = 1
-			column[lead][r] = 1; // HACK
+			// column[lead][r] = 1; // HACK
 			for (i = 0; i < rows; ++i) {
 				if (i != r) {
 					T factor = column[lead][i];
 					subVectorFromRow(i, getRowVector(r) * factor);
 					// FIXME: explicitly set zero?
-					column[lead][i] = 0; // HACK
+					// column[lead][i] = 0; // HACK
 				}
 			} /* end for */
 			lead++;
