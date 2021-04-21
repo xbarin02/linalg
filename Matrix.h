@@ -108,6 +108,17 @@ public:
 		}
 	}
 
+	void subVectorFromRow(std::size_t r, const Vector<T> &v)
+	{
+		if (cols != v.dim()) {
+			throw std::domain_error("wrong number of elements");
+		}
+
+		for (std::size_t c = 0; c < cols; ++c) {
+			column[c][r] -= v[c];
+		}
+	}
+
 	const Vector<T> &getColumnVector(std::size_t c) const
 	{
 		return column[c];
