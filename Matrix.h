@@ -150,8 +150,7 @@ public:
 				swapRowVectors(i, r);
 			}
 			T factor = column[lead][r];
-			mulRowVector(r, 1/factor); // FIXME: explicitly set [lead][r] = 1
-			// FIXME: reuse i?
+			mulRowVector(r, 1/factor); // FIXME: explicitly set column[lead][r] = 11
 			for (i = 0; i < rows; ++i) {
 				if (i != r) {
 					T factor = column[lead][i];
