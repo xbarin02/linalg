@@ -119,6 +119,49 @@ public:
 		}
 	}
 
+	void mulRowVector(std::size_t r, T factor)
+	{
+		for (std::size_t c = 0; c < cols; ++c) {
+			column[c][r] *= factor;
+		}
+	}
+
+	// https://en.wikipedia.org/wiki/Row_echelon_form#Reduced_row_echelon_form
+	void toRref()
+	{
+		std::size_t lead = 0;
+
+		for (std::size_t r = 0; r < rows; ++r) {
+			if (cols <= lead) {
+				return;
+			}
+			std::size_t i = r;
+			while (column[lead][i] == 0) {
+				i++;
+				if (rows == i) {
+					i = r;
+					lead++;
+					if (cols == lead) {
+						return;
+					}
+				}
+			} /* end while */
+			if (i != r) {
+				swapRowVectors(i, r);
+			}
+			T factor = column[lead][r];
+			mulRowVector(r, 1/factor); // FIXME: explicitly set [lead][r] = 1
+			// FIXME: reuse i?
+			for (i = 0; i < rows; ++i) {
+				if (i != r) {
+					T factor = column[lead][i];
+					subVectorFromRow(i, getRowVector(r) * factor); // FIXME: set zeros?
+				}
+			} /* end for */
+			lead++;
+		} /* end for */
+	}
+
 	const Vector<T> &getColumnVector(std::size_t c) const
 	{
 		return column[c];

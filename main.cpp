@@ -113,5 +113,13 @@ int main()
 	A.subVectorFromRow(1, Vector<float>{1, 1, 1});
 	std::cout << A << "\n";
 
+	Matrix<float> D;
+	D.addColumnVector(Vector<float>{1, 4, 7});
+	D.addColumnVector(Vector<float>{2, 5, 8});
+	D.addColumnVector(Vector<float>{3, 6, 9});
+	std::cout << D << "\n";
+	D.toRref();
+	std::cout << D << "\n";
+
 	return 0;
 }
