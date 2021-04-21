@@ -123,6 +123,10 @@ public:
 	{
 		for (std::size_t c = 0; c < cols; ++c) {
 			column[c][r] *= factor;
+
+			if (column[c][r] == -0) {
+				column[c][r] = 0;
+			}
 		}
 	}
 
