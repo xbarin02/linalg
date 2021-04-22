@@ -118,6 +118,7 @@ int main()
 	D.addColumnVector(Vector<float>{2, 5, 8});
 	D.addColumnVector(Vector<float>{3, 6, 9});
 	std::cout << D << "\n";
+	std::cout << D.det() << "\n";
 	D.toRref();
 	std::cout << D << "\n";
 
@@ -127,6 +128,7 @@ int main()
 	E.addColumnVector(Vector<float>{5, 6, 7, 5});
 	E.addColumnVector(Vector<float>{5, 6, 8, 5});
 	E = E.getTranspose();
+	std::cout << E.det() << "\n";
 	E.toRref();
 	std::cout << E << "\n";
 
@@ -136,6 +138,7 @@ int main()
 	F.addColumnVector(Vector<float>{4, 2, 8});
 	F.addColumnVector(Vector<float>{3, 1, 1});
 	std::cout << F << "\n";
+	std::cout << F.det() << "\n";
 // 	F.toRref();
 // 	std::cout << F << "\n";
 	Matrix<float> G = F.getInverse();
