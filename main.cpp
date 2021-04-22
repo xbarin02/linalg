@@ -136,8 +136,11 @@ int main()
 	F.addColumnVector(Vector<float>{4, 2, 8});
 	F.addColumnVector(Vector<float>{3, 1, 1});
 	std::cout << F << "\n";
-	F.toRref();
-	std::cout << F << "\n";
+// 	F.toRref();
+// 	std::cout << F << "\n";
+	Matrix<float> G = F.getInverse();
+	std::cout << G << "\n";
+	std::cout << (F * G) << "\n";
 
 
 	return 0;

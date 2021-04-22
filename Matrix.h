@@ -169,6 +169,56 @@ public:
 		} /* end for */
 	}
 
+	Matrix getInverse() const
+	{
+		if (cols != rows) {
+			throw std::domain_error("matrix must be square");
+		}
+
+		Matrix A = *this;
+		Matrix B = identity(cols);
+
+		std::size_t lead = 0;
+
+		for (std::size_t r = 0; r < rows; ++r) {
+			if (cols <= lead) {
+				return B;
+			}
+			std::size_t i = r;
+			while (A.column[lead][i] == 0) {
+				i++;
+				if (rows == i) {
+					i = r;
+					lead++;
+					if (cols == lead) {
+						return B;
+					}
+				}
+			} /* end while */
+			if (i != r) {
+				A.swapRowVectors(i, r);
+				B.swapRowVectors(i, r); // NOTE (1)
+			}
+			T factor = A.column[lead][r];
+			A.mulRowVector(r, 1/factor);
+			B.mulRowVector(r, 1/factor); // NOTE (2)
+			// FIXME: explicitly set A.column[lead][r] = 1
+			// A.column[lead][r] = 1; // HACK
+			for (i = 0; i < rows; ++i) {
+				if (i != r) {
+					T factor = A.column[lead][i];
+					A.subVectorFromRow(i, A.getRowVector(r) * factor);
+					B.subVectorFromRow(i, B.getRowVector(r) * factor); // NOTE (3)
+					// FIXME: explicitly set zero?
+					// A.column[lead][i] = 0; // HACK
+				}
+			} /* end for */
+			lead++;
+		} /* end for */
+
+		return B;
+	}
+
 	const Vector<T> &getColumnVector(std::size_t c) const
 	{
 		return column[c];
