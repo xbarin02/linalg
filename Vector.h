@@ -176,6 +176,13 @@ public:
 		return *this *= v;
 	}
 
+	static bool nearlyZero(T a, T epsilon = 1e-6)
+	{
+		float diff = std::fabs(a);
+
+		return diff < epsilon;
+	}
+
 	// dot
 	T operator*=(const Vector &v) const
 	{
@@ -187,6 +194,10 @@ public:
 
 		for (std::size_t n = 0; n < size; ++n) {
 			s += vector[n] * v.vector[n];
+		}
+
+		if (nearlyZero(s)) {
+			s = 0;
 		}
 
 		return s;
