@@ -169,6 +169,15 @@ public:
 		} /* end for */
 	}
 
+	Matrix getRref() const
+	{
+		Matrix copy(*this);
+
+		copy.toRref();
+
+		return copy;
+	}
+
 	Matrix getInverse() const
 	{
 		if (cols != rows) {
