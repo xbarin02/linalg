@@ -130,6 +130,15 @@ int main()
 	E.toRref();
 	std::cout << E << "\n";
 
+	// rref(F) = I
+	Matrix<float> F;
+	F.addColumnVector(Vector<float>{1, 4, 7});
+	F.addColumnVector(Vector<float>{4, 2, 8});
+	F.addColumnVector(Vector<float>{3, 1, 1});
+	std::cout << F << "\n";
+	F.toRref();
+	std::cout << F << "\n";
+
 
 	return 0;
 }
