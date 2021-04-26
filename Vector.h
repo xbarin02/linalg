@@ -66,6 +66,13 @@ public:
 		return os;
 	}
 
+	friend Vector operator*(T a, const Vector& v)
+	{
+		Vector w(v);
+
+		return w * a;
+	}
+
 	const T& operator[](std::size_t n) const
 	{
 		return vector[n];
@@ -232,14 +239,6 @@ public:
 	}
 };
 
-}
-
-template <typename T>
-LinAlg::Vector<T> operator*(T a, const LinAlg::Vector<T>& v)
-{
-	LinAlg::Vector<T> w(v);
-
-	return w * a;
 }
 
 #endif
