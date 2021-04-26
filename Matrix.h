@@ -387,6 +387,7 @@ public:
 		for (std::size_t c = 0; c < cols; ++c) {
 			if (R.getColumnVector(c).is_pivot()) {
 				std::size_t entry = R.getColumnVector(c).getPivotEntry();
+				// BUG: should verify whether this is a leading entry in a row
 				/* not found? */
 				if (pivotEntries.find(entry) == pivotEntries.end()) {
 					pivotEntries.insert(entry);
