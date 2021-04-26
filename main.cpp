@@ -156,6 +156,14 @@ int main()
 	std::cout << H << "\n";
 	std::cout << F.getRref() << "\n";
 
+	Matrix<float> J;
+	J.addColumnVector(Vector<float>{1, 2, -1, 1});
+	J.addColumnVector(Vector<float>{0, 1, 2, -1});
+	J.addColumnVector(Vector<float>{-1, 0, 5, -3});
+	J.addColumnVector(Vector<float>{0, 0, 1, -2});
+	J.addColumnVector(Vector<float>{4, 9, -5, 9});
+	std::cout << J << "\n";
+	std::cout << J.getBasis() << "\n";
 
 	return 0;
 }
