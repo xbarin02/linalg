@@ -160,7 +160,9 @@ public:
 	{
 		Vector copy(*this);
 
-		copy *= -1;
+		for (std::size_t n = 0; n < size; ++n) {
+			copy.vector[n] = -copy.vector[n];
+		}
 
 		return copy;
 	}
