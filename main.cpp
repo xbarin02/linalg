@@ -128,6 +128,8 @@ int main()
 	E.addColumnVector(Vector<float>{5, 6, 7, 5});
 	E.addColumnVector(Vector<float>{5, 6, 8, 5});
 	E = E.getTranspose();
+	std::cout << E << "\n";
+	std::cout << E.getBasis() << "\n";
 	std::cout << E.det() << "\n";
 	E.toRref();
 	std::cout << E << "\n";

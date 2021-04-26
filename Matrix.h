@@ -4,6 +4,7 @@
 #include <vector>
 #include <stdexcept>
 #include <utility>
+#include <set>
 #include "Vector.h"
 
 namespace LinAlg {
@@ -374,6 +375,27 @@ public:
 		for (std::size_t c = 0; c < cols; ++c) {
 			column[c].round();
 		}
+	}
+
+	Matrix getBasis() const
+	{
+		Matrix B;
+		Matrix R = getRref();
+
+		std::set<std::size_t> pivotEntries;
+
+		for (std::size_t c = 0; c < cols; ++c) {
+			if (R.getColumnVector(c).is_pivot()) {
+				std::size_t entry = R.getColumnVector(c).getPivotEntry();
+				/* not found? */
+				if (pivotEntries.find(entry) == pivotEntries.end()) {
+					pivotEntries.insert(entry);
+					B.addColumnVector(getColumnVector(c));
+				}
+			}
+		}
+
+		return B;
 	}
 };
 
