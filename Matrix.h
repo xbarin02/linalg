@@ -4,7 +4,6 @@
 #include <vector>
 #include <stdexcept>
 #include <utility>
-#include <set>
 #include "Vector.h"
 
 namespace LinAlg {
@@ -382,15 +381,20 @@ public:
 		Matrix B;
 		Matrix R = getRref();
 
-		std::set<std::size_t> pivotEntries;
-
 		for (std::size_t c = 0; c < cols; ++c) {
 			if (R.getColumnVector(c).is_pivot()) {
 				std::size_t entry = R.getColumnVector(c).getPivotEntry();
-				// BUG: should verify whether this is a leading entry in a row
+
+				// verify whether this is a leading entry in a row
+				bool lead = true;
+				for (std::size_t cc = 0; cc < c; ++cc) {
+					if (R.getColumnVector(cc)[entry] != 0) {
+						lead = false;
+					}
+				}
+
 				/* not found? */
-				if (pivotEntries.find(entry) == pivotEntries.end()) {
-					pivotEntries.insert(entry);
+				if (lead) {
 					B.addColumnVector(getColumnVector(c));
 				}
 			}
