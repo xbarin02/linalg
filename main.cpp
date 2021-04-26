@@ -132,10 +132,10 @@ int main()
 	E.toRref();
 	std::cout << E << "\n";
 
-	std::cout << E.getColumnVector(0).is_pivot() << "\n";
-	std::cout << E.getColumnVector(1).is_pivot() << "\n";
-	std::cout << E.getColumnVector(2).is_pivot() << "\n";
-	std::cout << E.getColumnVector(3).is_pivot() << "\n";
+	std::cout << E.getColumnVector(0).is_pivot() << " " << E.getColumnVector(0).getPivotEntry() << "\n";
+	std::cout << E.getColumnVector(1).is_pivot() << " " << E.getColumnVector(1).getPivotEntry() << "\n";
+	std::cout << E.getColumnVector(2).is_pivot() << " " << E.getColumnVector(2).getPivotEntry() << "\n";
+	std::cout << E.getColumnVector(3).is_pivot() << " " << E.getColumnVector(3).getPivotEntry() << "\n";
 	std::cout << "here" << "\n\n";
 
 	// rref(F) = I

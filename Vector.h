@@ -265,6 +265,17 @@ public:
 
 		return zeros + 1 == size && units == 1;
 	}
+
+	std::size_t getPivotEntry() const
+	{
+		for (std::size_t n = 0; n < size; ++n) {
+			if (vector[n] == 1) {
+				return n;
+			}
+		}
+
+		return -1;
+	}
 };
 
 }
