@@ -185,11 +185,24 @@ public:
 		return *this *= v;
 	}
 
-	static bool nearlyZero(T a, T epsilon = 1e-6)
+	static bool nearly(T a, T b = 0, T epsilon = 1e-6)
 	{
-		float diff = std::fabs(a);
+		float diff = std::fabs(a - b);
 
 		return diff < epsilon;
+	}
+
+	void round()
+	{
+		for (std::size_t n = 0; n < size; ++n) {
+			if (nearly(vector[n], 0)) {
+				vector[n] = 0;
+			}
+
+			if (nearly(vector[n], 1)) {
+				vector[n] = 1;
+			}
+		}
 	}
 
 	// dot
@@ -203,10 +216,6 @@ public:
 
 		for (std::size_t n = 0; n < size; ++n) {
 			s += vector[n] * v.vector[n];
-		}
-
-		if (nearlyZero(s)) {
-			s = 0;
 		}
 
 		return s;

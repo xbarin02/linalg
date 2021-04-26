@@ -368,6 +368,13 @@ public:
 
 		return m;
 	}
+
+	void round()
+	{
+		for (std::size_t c = 0; c < cols; ++c) {
+			column[c].round();
+		}
+	}
 };
 
 }

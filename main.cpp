@@ -143,7 +143,9 @@ int main()
 // 	std::cout << F << "\n";
 	Matrix<float> G = F.getInverse();
 	std::cout << G << "\n";
-	std::cout << (F * G) << "\n";
+	Matrix<float> H = F * G;
+	H.round();
+	std::cout << H << "\n";
 	std::cout << F.getRref() << "\n";
 
 
