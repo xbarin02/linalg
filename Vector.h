@@ -246,6 +246,25 @@ public:
 
 		return std::acos((a * b) / a.length() / b.length());
 	}
+
+	// all zeros, except a single unit
+	bool is_pivot() const
+	{
+		std::size_t zeros = 0;
+		std::size_t units = 0;
+
+		for (std::size_t n = 0; n < size; ++n) {
+			if (vector[n] == 0) {
+				zeros++;
+			}
+
+			if (vector[n] == 1) {
+				units++;
+			}
+		}
+
+		return zeros + 1 == size && units == 1;
+	}
 };
 
 }
