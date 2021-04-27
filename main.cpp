@@ -184,5 +184,15 @@ int main()
 	std::cout << L.getRref() << "\n";
 	std::cout << L.getNullSpace() << "\n";
 
+	Matrix<float> O;
+	O.addColumnVector(Vector<float>{1, 1});
+	O.addColumnVector(Vector<float>{1, 1});
+	O.addColumnVector(Vector<float>{2, 3});
+	O.addColumnVector(Vector<float>{3, 1});
+	O.addColumnVector(Vector<float>{2, 4});
+	std::cout << O << "\n";
+	std::cout << O.getRref() << "\n";
+	std::cout << O.getNullSpace() << "\n";
+
 	return 0;
 }
