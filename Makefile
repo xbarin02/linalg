@@ -1,5 +1,6 @@
 CXX=g++
-CXXFLAGS=-std=c++11 -pedantic -Wall -Wextra
+CXXFLAGS=-std=c++11 -pedantic -Wall -Wextra -Og -g
+LDFLAGS=-rdynamic
 LINK.o=g++
 BIN=main
 

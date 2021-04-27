@@ -173,5 +173,16 @@ int main()
 	std::cout << K << "\n";
 	std::cout << K.getNullSpace() << "\n";
 
+	Matrix<float> L;
+	L.addColumnVector(Vector<float>{1, 2, 0, 2});
+	L.addColumnVector(Vector<float>{3, 6, 0, 6});
+	L.addColumnVector(Vector<float>{-2, -5, 5, 0});
+	L.addColumnVector(Vector<float>{0, -2, 10, 8});
+	L.addColumnVector(Vector<float>{2, 4, 0, 4});
+	L.addColumnVector(Vector<float>{0, -3, 15, 18});
+	std::cout << L << "\n";
+	std::cout << L.getRref() << "\n";
+	std::cout << L.getNullSpace() << "\n";
+
 	return 0;
 }

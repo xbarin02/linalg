@@ -416,7 +416,7 @@ public:
 
 		for (std::size_t cc = 0; cc < R.cols; ++cc) {
 			if (R.getColumnVector(cc)[entry] != 0) {
-				return cc;
+				return entry;
 			}
 		}
 
