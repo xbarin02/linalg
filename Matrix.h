@@ -419,6 +419,8 @@ public:
 				return cc;
 			}
 		}
+
+		return 0;
 	}
 
 	Matrix getNullSpace() const
@@ -442,7 +444,7 @@ public:
 					if (isPivotColumn(R, cc)) {
 						std::size_t elem = getLeadingColumn(R, cc);
 						// add negative value of c-th element at cc-th element
-						v[cc] = - R.getColumnVector(c)[elem];
+						v[cc] = -R.getColumnVector(c)[elem];
 					}
 				}
 				// add the vector to N
