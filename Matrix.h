@@ -409,6 +409,45 @@ public:
 
 		return B;
 	}
+
+	Matrix getNullSpace() const
+	{
+		Matrix N;
+		Matrix R = getRref();
+
+		// for each free column
+		for (std::size_t c = 0; c < cols; ++c) {
+			if (!isPivotColumn(R, c)) {
+				// new Vector(cols)
+				Vector<T> v(cols);
+				// zero the vector
+				for (std::size_t n = 0; n < cols; ++n) {
+					v[n] = 0;
+				}
+				// set 1 at c-th position
+				v[c] = 1;
+				// for each pivot column cc
+				for (std::size_t cc = 0; cc < cols; ++cc) {
+					if (isPivotColumn(R, cc)) {
+						std::size_t entry = R.getColumnVector(cc).getPivotEntry();
+						std::size_t elem = 0;
+						for (std::size_t ccc = 0; ccc < cols; ++ccc) {
+							if (R.getColumnVector(ccc)[entry] != 0) {
+								elem = ccc;
+								break;
+							}
+						}
+						// add negative value of c-th element at cc-th element
+						v[cc] = - R.getColumnVector(c)[elem];
+					}
+				}
+				// add the vector to N
+				N.addColumnVector(v);
+			}
+		}
+
+		return N;
+	}
 };
 
 }

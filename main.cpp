@@ -171,6 +171,7 @@ int main()
 	K.addColumnVector(Vector<float>{1, 3, 2});
 	K.addColumnVector(Vector<float>{1, 4, 1});
 	std::cout << K << "\n";
+	std::cout << K.getNullSpace() << "\n";
 
 	return 0;
 }
