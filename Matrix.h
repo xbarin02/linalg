@@ -376,27 +376,29 @@ public:
 		}
 	}
 
+	static bool isLeadingPivotEntry(const Matrix &R, std::size_t c)
+	{
+		std::size_t entry = R.getColumnVector(c).getPivotEntry();
+
+		// verify whether this is a leading entry in a row
+		bool lead = true;
+		for (std::size_t cc = 0; cc < c; ++cc) {
+			if (R.getColumnVector(cc)[entry] != 0) {
+				lead = false;
+			}
+		}
+
+		return lead;
+	}
+
 	Matrix getBasis() const
 	{
 		Matrix B;
 		Matrix R = getRref();
 
 		for (std::size_t c = 0; c < cols; ++c) {
-			if (R.getColumnVector(c).is_pivot()) {
-				std::size_t entry = R.getColumnVector(c).getPivotEntry();
-
-				// verify whether this is a leading entry in a row
-				bool lead = true;
-				for (std::size_t cc = 0; cc < c; ++cc) {
-					if (R.getColumnVector(cc)[entry] != 0) {
-						lead = false;
-					}
-				}
-
-				/* not found? */
-				if (lead) {
-					B.addColumnVector(getColumnVector(c));
-				}
+			if (R.getColumnVector(c).isPivot() && isLeadingPivotEntry(R, c)) {
+				B.addColumnVector(getColumnVector(c));
 			}
 		}
 

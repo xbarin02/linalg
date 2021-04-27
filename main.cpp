@@ -134,10 +134,10 @@ int main()
 	E.toRref();
 	std::cout << E << "\n";
 
-	std::cout << E.getColumnVector(0).is_pivot() << " " << E.getColumnVector(0).getPivotEntry() << "\n";
-	std::cout << E.getColumnVector(1).is_pivot() << " " << E.getColumnVector(1).getPivotEntry() << "\n";
-	std::cout << E.getColumnVector(2).is_pivot() << " " << E.getColumnVector(2).getPivotEntry() << "\n";
-	std::cout << E.getColumnVector(3).is_pivot() << " " << E.getColumnVector(3).getPivotEntry() << "\n";
+	std::cout << E.getColumnVector(0).isPivot() << " " << E.getColumnVector(0).getPivotEntry() << "\n";
+	std::cout << E.getColumnVector(1).isPivot() << " " << E.getColumnVector(1).getPivotEntry() << "\n";
+	std::cout << E.getColumnVector(2).isPivot() << " " << E.getColumnVector(2).getPivotEntry() << "\n";
+	std::cout << E.getColumnVector(3).isPivot() << " " << E.getColumnVector(3).getPivotEntry() << "\n";
 	std::cout << "here" << "\n\n";
 
 	// rref(F) = I
@@ -164,6 +164,13 @@ int main()
 	J.addColumnVector(Vector<float>{4, 9, -5, 9});
 	std::cout << J << "\n";
 	std::cout << J.getBasis() << "\n";
+
+	Matrix<float> K;
+	K.addColumnVector(Vector<float>{1, 1, 4});
+	K.addColumnVector(Vector<float>{1, 2, 3});
+	K.addColumnVector(Vector<float>{1, 3, 2});
+	K.addColumnVector(Vector<float>{1, 4, 1});
+	std::cout << K << "\n";
 
 	return 0;
 }

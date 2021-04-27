@@ -248,7 +248,7 @@ public:
 	}
 
 	// all zeros, except a single unit
-	bool is_pivot() const
+	bool isPivot() const
 	{
 		std::size_t zeros = 0;
 		std::size_t units = 0;
