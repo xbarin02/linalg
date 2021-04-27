@@ -454,6 +454,20 @@ public:
 
 		return N;
 	}
+
+	std::size_t nullity() const
+	{
+		std::size_t count = 0;
+		Matrix R = getRref();
+
+		for (std::size_t c = 0; c < cols; ++c) {
+			if (!isPivotColumn(R, c)) {
+				count++;
+			}
+		}
+
+		return count;
+	}
 };
 
 }

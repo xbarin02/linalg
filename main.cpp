@@ -171,6 +171,7 @@ int main()
 	K.addColumnVector(Vector<float>{1, 3, 2});
 	K.addColumnVector(Vector<float>{1, 4, 1});
 	std::cout << K << "\n";
+	std::cout << K.nullity() << "\n";
 	std::cout << K.getNullSpace() << "\n";
 
 	Matrix<float> L;
@@ -182,6 +183,7 @@ int main()
 	L.addColumnVector(Vector<float>{0, -3, 15, 18});
 	std::cout << L << "\n";
 	std::cout << L.getRref() << "\n";
+	std::cout << L.nullity() << "\n";
 	std::cout << L.getNullSpace() << "\n";
 
 	Matrix<float> O;
@@ -192,6 +194,7 @@ int main()
 	O.addColumnVector(Vector<float>{2, 4});
 	std::cout << O << "\n";
 	std::cout << O.getRref() << "\n";
+	std::cout << O.nullity() << "\n";
 	std::cout << O.getNullSpace() << "\n";
 
 	return 0;
