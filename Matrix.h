@@ -463,6 +463,11 @@ public:
 		return M.getNullSpace();
 	}
 
+	Matrix getOrthogonalComplementOfColSpace() const
+	{
+		return getLeftNullSpace();
+	}
+
 	std::size_t nullity() const
 	{
 		std::size_t count = 0;
