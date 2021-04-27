@@ -391,13 +391,18 @@ public:
 		return lead;
 	}
 
+	static bool isPivotColumn(const Matrix &R, std::size_t c)
+	{
+		return R.getColumnVector(c).isPivot() && isLeadingPivotEntry(R, c);
+	}
+
 	Matrix getBasis() const
 	{
 		Matrix B;
 		Matrix R = getRref();
 
 		for (std::size_t c = 0; c < cols; ++c) {
-			if (R.getColumnVector(c).isPivot() && isLeadingPivotEntry(R, c)) {
+			if (isPivotColumn(R, c)) {
 				B.addColumnVector(getColumnVector(c));
 			}
 		}
