@@ -455,6 +455,14 @@ public:
 		return N;
 	}
 
+	// N(A^T) = left nullspace of A
+	Matrix getLeftNullSpace() const
+	{
+		Matrix M = getTranspose();
+
+		return M.getNullSpace();
+	}
+
 	std::size_t nullity() const
 	{
 		std::size_t count = 0;
