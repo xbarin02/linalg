@@ -185,6 +185,8 @@ int main()
 	std::cout << L.getRref() << "\n";
 	std::cout << L.nullity() << "\n";
 	std::cout << L.getNullSpace() << "\n";
+	std::cout << "rank = " << L.rank() << "\n";
+	std::cout << L.getBasis() << "\n";
 
 	Matrix<float> O;
 	O.addColumnVector(Vector<float>{1, 1});
@@ -196,6 +198,8 @@ int main()
 	std::cout << O.getRref() << "\n";
 	std::cout << O.nullity() << "\n";
 	std::cout << O.getNullSpace() << "\n";
+	std::cout << "rank = " << O.rank() << "\n";
+	std::cout << O.getBasis() << "\n";
 
 	return 0;
 }
