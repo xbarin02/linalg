@@ -214,5 +214,15 @@ int main()
 		std::cout << v.proj(x) << "\n";
 	}
 
+	{
+		Matrix<float> A;
+		A.addColumnVector(Vector<float>{1, 0, 0, 1});
+		A.addColumnVector(Vector<float>{0, 1, 0, 1});
+		Matrix<float> x;
+		x.addColumnVector(Vector<float>{1, 2, 3, 4});
+		std::cout << "proj:" << "\n";
+		std::cout << A.proj(x) << "\n";
+	}
+
 	return 0;
 }

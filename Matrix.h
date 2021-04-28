@@ -309,9 +309,9 @@ public:
 		Matrix leftTransposed = getTranspose();
 
 		for (std::size_t c = 0; c < right.cols; ++c) {
-			Vector<T> v(cols);
+			Vector<T> v(leftTransposed.cols);
 
-			for (std::size_t r = 0; r < cols; ++r) {
+			for (std::size_t r = 0; r < leftTransposed.cols; ++r) {
 				v[r] = leftTransposed.getColumnVector(r) * right.getColumnVector(c);
 			}
 
@@ -499,6 +499,13 @@ public:
 		}
 
 		return count;
+	}
+
+	Matrix proj(const Matrix &x) const
+	{
+		const Matrix &A = *this;
+
+		return A * (A.getTranspose() * A).getInverse() * A.getTranspose() * x;
 	}
 };
 
