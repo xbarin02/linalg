@@ -276,6 +276,14 @@ public:
 
 		return -1;
 	}
+
+	// projection of x onto *this
+	Vector proj(const Vector &x) const
+	{
+		const Vector &v = *this;
+
+		return ((x * v) / (v * v)) * v;
+	}
 };
 
 }

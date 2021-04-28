@@ -207,5 +207,12 @@ int main()
 	std::cout << "left nullspace:\n";
 	std::cout << O.getLeftNullSpace() << "\n";
 
+	{
+		Vector<float> v{2, 1};
+		Vector<float> x{2, 3};
+
+		std::cout << v.proj(x) << "\n";
+	}
+
 	return 0;
 }
