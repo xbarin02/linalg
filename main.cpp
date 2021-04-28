@@ -221,6 +221,7 @@ int main()
 		Matrix<float> x;
 		x.addColumnVector(Vector<float>{1, 2, 3, 4});
 		std::cout << "proj:" << "\n";
+		std::cout << A * (A.getTranspose() * A).getInverse() * A.getTranspose() << "\n";
 		std::cout << A.proj(x) << "\n";
 	}
 
