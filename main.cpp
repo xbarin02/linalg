@@ -225,6 +225,7 @@ int main()
 		std::cout << A * (A.getTranspose() * A).getInverse() * A.getTranspose() << "\n";
 		std::cout << A.proj(x) << "\n";
 		std::cout << A.getOrthogonalComplementOfColSpace().proj(x) << "\n";
+		std::cout << A.proj(x) + A.getOrthogonalComplementOfColSpace().proj(x) << "\n";
 	}
 
 	return 0;
