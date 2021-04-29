@@ -5,6 +5,7 @@
 #include <iostream>
 #include <cmath>
 #include <stdexcept>
+#include "Float.h"
 
 namespace LinAlg {
 
@@ -205,21 +206,14 @@ public:
 		return *this *= v;
 	}
 
-	static bool nearly(T a, T b = 0, T epsilon = 1e-6)
-	{
-		float diff = std::fabs(a - b);
-
-		return diff < epsilon;
-	}
-
 	void round()
 	{
 		for (std::size_t n = 0; n < size; ++n) {
-			if (nearly(vector[n], 0)) {
+			if (Float<T>::nearly(vector[n], 0)) {
 				vector[n] = 0;
 			}
 
-			if (nearly(vector[n], 1)) {
+			if (Float<T>::nearly(vector[n], 1)) {
 				vector[n] = 1;
 			}
 		}

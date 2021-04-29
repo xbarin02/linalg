@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <utility>
 #include "Vector.h"
+#include "Float.h"
 
 namespace LinAlg {
 
@@ -140,7 +141,7 @@ public:
 				return;
 			}
 			std::size_t i = r;
-			while (Vector<T>::nearly(column[lead][i], 0)) {
+			while (Float<T>::nearly(column[lead][i], 0)) {
 				i++;
 				if (rows == i) {
 					i = r;
@@ -194,7 +195,7 @@ public:
 				goto end;
 			}
 			std::size_t i = r;
-			while (Vector<T>::nearly(A.column[lead][i], 0)) {
+			while (Float<T>::nearly(A.column[lead][i], 0)) {
 				i++;
 				if (rows == i) {
 					i = r;
