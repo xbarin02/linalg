@@ -140,7 +140,7 @@ public:
 				return;
 			}
 			std::size_t i = r;
-			while (Vector<T>::nearly(column[lead][i])) {
+			while (Vector<T>::nearly(column[lead][i], 0)) {
 				i++;
 				if (rows == i) {
 					i = r;
@@ -156,7 +156,7 @@ public:
 			T factor = column[lead][r];
 			mulRowVector(r, 1/factor);
 			// FIXME: explicitly set column[lead][r] = 1
-			// column[lead][r] = 1; // HACK
+			column[lead][r] = 1; // HACK
 			for (i = 0; i < rows; ++i) {
 				if (i != r) {
 					T factor = column[lead][i];
@@ -194,7 +194,7 @@ public:
 				goto end;
 			}
 			std::size_t i = r;
-			while (Vector<T>::nearly(A.column[lead][i])) {
+			while (Vector<T>::nearly(A.column[lead][i], 0)) {
 				i++;
 				if (rows == i) {
 					i = r;
@@ -212,7 +212,7 @@ public:
 			A.mulRowVector(r, 1/factor);
 			B.mulRowVector(r, 1/factor); // NOTE (2)
 			// FIXME: explicitly set A.column[lead][r] = 1
-			// A.column[lead][r] = 1; // HACK
+			A.column[lead][r] = 1; // HACK
 			for (i = 0; i < rows; ++i) {
 				if (i != r) {
 					T factor = A.column[lead][i];
