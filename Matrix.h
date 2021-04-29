@@ -162,7 +162,7 @@ public:
 					T factor = column[lead][i];
 					subVectorFromRow(i, getRowVector(r) * factor);
 					// FIXME: explicitly set zero?
-					// column[lead][i] = 0; // HACK
+					column[lead][i] = 0; // HACK
 				}
 			} /* end for */
 			lead++;
@@ -219,12 +219,13 @@ public:
 					A.subVectorFromRow(i, A.getRowVector(r) * factor);
 					B.subVectorFromRow(i, B.getRowVector(r) * factor); // NOTE (3)
 					// FIXME: explicitly set zero?
-					// A.column[lead][i] = 0; // HACK
+					A.column[lead][i] = 0; // HACK
 				}
 			} /* end for */
 			lead++;
 		} /* end for */
 end:
+		A.round();
 		if (A != identity(cols)) {
 			throw std::domain_error("matrix must be invertible");
 		}

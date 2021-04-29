@@ -229,17 +229,20 @@ int main()
 	}
 
 	{
-		Matrix<float> E;
-		E.addColumnVector(Vector<float>{0, 1e-3, 1e-3, 0});
-		E.addColumnVector(Vector<float>{1e-2, 1e-2, 0, 0});
-		E.addColumnVector(Vector<float>{5, 6, 7, 5});
-		E.addColumnVector(Vector<float>{5, 6, 8, 5});
+		Matrix<double> E;
+		E.addColumnVector(Vector<double>{0, 1e-3, 1e-3, 0});
+		E.addColumnVector(Vector<double>{1e-5, 1e-2, 0, 0});
+		E.addColumnVector(Vector<double>{5, 6, 7, 5});
+		E.addColumnVector(Vector<double>{5, 6, 8, 5});
 		E = E.getTranspose();
 		std::cout << E << "\n";
 		std::cout << E.det() << "\n";
+		std::cout << "rref\n";
 		std::cout << E.getRref() << "\n";
+		std::cout << "inverse\n";
+		std::cout << E.getInverse() << "\n";
 		std::cout << "inverse * E\n";
-		Matrix<float> I = E.getInverse() * E;
+		Matrix<double> I = E.getInverse() * E;
 		I.round();
 		std::cout << I << "\n";
 	}
