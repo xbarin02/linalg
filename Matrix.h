@@ -140,7 +140,7 @@ public:
 				return;
 			}
 			std::size_t i = r;
-			while (column[lead][i] == 0) {
+			while (Vector<T>::nearly(column[lead][i])) {
 				i++;
 				if (rows == i) {
 					i = r;
@@ -194,7 +194,7 @@ public:
 				goto end;
 			}
 			std::size_t i = r;
-			while (A.column[lead][i] == 0) {
+			while (Vector<T>::nearly(A.column[lead][i])) {
 				i++;
 				if (rows == i) {
 					i = r;

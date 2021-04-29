@@ -230,7 +230,7 @@ int main()
 
 	{
 		Matrix<double> E;
-		E.addColumnVector(Vector<double>{0, 1e-3, 1e-3, 0});
+		E.addColumnVector(Vector<double>{1e-38, 1e-3, 1e-3, 0});
 		E.addColumnVector(Vector<double>{1e-5, 1e-2, 0, 0});
 		E.addColumnVector(Vector<double>{5, 6, 7, 5});
 		E.addColumnVector(Vector<double>{5, 6, 8, 5});
