@@ -127,6 +127,26 @@ public:
 		return *this;
 	}
 
+	bool operator==(const Vector &v) const
+	{
+		if (size != v.size) {
+			throw std::domain_error("vector dimensions must agree");
+		}
+
+		for (std::size_t n = 0; n < size; ++n) {
+			if (vector[n] != v.vector[n]) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	bool operator!=(const Vector &v) const
+	{
+		return !(*this == v);
+	}
+
 	Vector operator*(T a) const
 	{
 		Vector copy(*this);

@@ -228,5 +228,21 @@ int main()
 		std::cout << A.proj(x) + A.getOrthogonalComplementOfColSpace().proj(x) << "\n";
 	}
 
+	{
+		Matrix<float> E;
+		E.addColumnVector(Vector<float>{0, 1e-3, 1e-3, 0});
+		E.addColumnVector(Vector<float>{1e-2, 1e-2, 0, 0});
+		E.addColumnVector(Vector<float>{5, 6, 7, 5});
+		E.addColumnVector(Vector<float>{5, 6, 8, 5});
+		E = E.getTranspose();
+		std::cout << E << "\n";
+		std::cout << E.det() << "\n";
+		std::cout << E.getRref() << "\n";
+		std::cout << "inverse * E\n";
+		Matrix<float> I = E.getInverse() * E;
+		I.round();
+		std::cout << I << "\n";
+	}
+
 	return 0;
 }

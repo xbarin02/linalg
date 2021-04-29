@@ -191,7 +191,7 @@ public:
 
 		for (std::size_t r = 0; r < rows; ++r) {
 			if (cols <= lead) {
-				return B;
+				goto end;
 			}
 			std::size_t i = r;
 			while (A.column[lead][i] == 0) {
@@ -200,7 +200,7 @@ public:
 					i = r;
 					lead++;
 					if (cols == lead) {
-						return B;
+						goto end;
 					}
 				}
 			} /* end while */
@@ -224,6 +224,10 @@ public:
 			} /* end for */
 			lead++;
 		} /* end for */
+end:
+		if (A != identity(cols)) {
+			throw std::domain_error("matrix must be invertible");
+		}
 
 		return B;
 	}
@@ -300,6 +304,26 @@ public:
 		}
 
 		return sum;
+	}
+
+	bool operator==(const Matrix &m) const
+	{
+		if (cols != m.cols || rows != m.rows) {
+			throw std::domain_error("matrix dimensions must agree");
+		}
+
+		for (std::size_t c = 0; c < cols; ++c) {
+			if (getColumnVector(c) != m.getColumnVector(c)) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	bool operator!=(const Matrix &m) const
+	{
+		return !(*this == m);
 	}
 
 	// matrix-matrix product
