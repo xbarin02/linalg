@@ -533,6 +533,21 @@ end:
 
 		return A * (A.getTranspose() * A).getInverse() * A.getTranspose() * x;
 	}
+
+	T trace() const
+	{
+		if (cols != rows) {
+			throw std::domain_error("matrix must be square");
+		}
+
+		T sum = 0;
+
+		for (std::size_t c = 0; c < cols; ++c) {
+			sum += column[c][c];
+		}
+
+		return sum;
+	}
 };
 
 }

@@ -245,6 +245,7 @@ int main()
 		Matrix<double> I = E.getInverse() * E;
 		I.round();
 		std::cout << I << "\n";
+		std::cout << "trace = " << E.trace() << "\n";
 	}
 
 	return 0;
