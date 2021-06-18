@@ -296,6 +296,7 @@ end:
 
 		// expansion by 0-th row and c-th column
 		T sum = 0;
+
 		for (std::size_t c = 0; c < cols; ++c) {
 			T a = getSubMatrix(0, c).det() * column[c][0];
 			if (c % 2 == 0) {
