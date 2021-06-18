@@ -261,6 +261,8 @@ int main()
 		std::cout << "|M| = " << M.det() << "\n";
 
 		std::cout << "\nA =\n" << M.getAdjugate() << "\n";
+
+		std::cout << "\n" << M.getAdjugate() * (1.f / M.det()) << "\n";
 	}
 
 	return 0;

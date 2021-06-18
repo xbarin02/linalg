@@ -328,6 +328,17 @@ end:
 		return !(*this == m);
 	}
 
+	Matrix operator*(T a) const
+	{
+		Matrix M;
+
+		for (std::size_t c = 0; c < cols; ++c) {
+			M.addColumnVector(getColumnVector(c) * a);
+		}
+
+		return M;
+	}
+
 	// matrix-matrix product
 	Matrix operator*(const Matrix &right) const
 	{
