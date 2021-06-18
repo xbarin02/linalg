@@ -548,6 +548,29 @@ end:
 
 		return sum;
 	}
+
+	Matrix getAdjugate() const
+	{
+		Matrix M;
+
+		for (std::size_t c = 0; c < cols; ++c) {
+			Vector<T> v(rows);
+
+			for (std::size_t r = 0; r < rows; ++r) {
+				Matrix S = getSubMatrix(r, c);
+
+				if ((r + c) % 2 == 0) {
+					v[r] = +S.det();
+				} else {
+					v[r] = -S.det();
+				}
+			}
+
+			M.addColumnVector(v);
+		}
+
+		return M.getTranspose();
+	}
 };
 
 }

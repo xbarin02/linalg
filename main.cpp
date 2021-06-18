@@ -248,5 +248,20 @@ int main()
 		std::cout << "trace = " << E.trace() << "\n";
 	}
 
+	{
+		Matrix<float> M;
+		M.addColumnVector(Vector<float>{1, 1, 2});
+		M.addColumnVector(Vector<float>{0, 1, 1});
+		M.addColumnVector(Vector<float>{3, -2, 0});
+		std::cout << "\nM =\n" << M << "\n";
+
+		Matrix<float> N = M.getInverse();
+		std::cout << "\nM^{-1} =\n" << N << "\n";
+
+		std::cout << "|M| = " << M.det() << "\n";
+
+		std::cout << "\nA =\n" << M.getAdjugate() << "\n";
+	}
+
 	return 0;
 }
