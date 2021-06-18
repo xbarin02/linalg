@@ -283,6 +283,17 @@ end:
 		return m;
 	}
 
+	T getCofactor(std::size_t r, std::size_t c) const
+	{
+		T a = getSubMatrix(r, c).det();
+
+		if ((r + c) % 2 == 0) {
+			return +a;
+		} else {
+			return -a;
+		}
+	}
+
 	T det() const
 	{
 		if (cols != rows) {
@@ -298,12 +309,7 @@ end:
 		T sum = 0;
 
 		for (std::size_t c = 0; c < cols; ++c) {
-			T a = getSubMatrix(0, c).det() * column[c][0];
-			if (c % 2 == 0) {
-				sum += a;
-			} else {
-				sum -= a;
-			}
+			sum += getCofactor(0, c) * column[c][0];
 		}
 
 		return sum;
@@ -576,13 +582,7 @@ end:
 			Vector<T> v(rows);
 
 			for (std::size_t r = 0; r < rows; ++r) {
-				Matrix S = getSubMatrix(r, c);
-
-				if ((r + c) % 2 == 0) {
-					v[r] = +S.det();
-				} else {
-					v[r] = -S.det();
-				}
+				v[r] = getCofactor(r, c);
 			}
 
 			M.addColumnVector(v);
