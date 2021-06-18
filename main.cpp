@@ -262,7 +262,7 @@ int main()
 
 		std::cout << "\nA =\n" << M.getAdjugate() << "\n";
 
-		std::cout << "\n" << M.getAdjugate() * (1.f / M.det()) << "\n";
+		std::cout << "\n" << 1.f / M.det() * M.getAdjugate() << "\n";
 	}
 
 	return 0;

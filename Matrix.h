@@ -339,6 +339,13 @@ end:
 		return M;
 	}
 
+	friend Matrix operator*(T a, const Matrix& m)
+	{
+		Matrix M(m);
+
+		return M * a;
+	}
+
 	// matrix-matrix product
 	Matrix operator*(const Matrix &right) const
 	{
