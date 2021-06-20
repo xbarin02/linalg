@@ -263,6 +263,8 @@ int main()
 		std::cout << "\nA =\n" << M.getAdjugate() << "\n";
 
 		std::cout << "\n" << 1.f / M.det() * M.getAdjugate() << "\n";
+
+		std::cout << "\nM^{-1} =\n" << M.getInverse2() << "\n";
 	}
 
 	return 0;

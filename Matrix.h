@@ -590,6 +590,11 @@ end:
 
 		return M.getTranspose();
 	}
+
+	Matrix getInverse2() const
+	{
+		return 1.f / det() * getAdjugate();
+	}
 };
 
 }
