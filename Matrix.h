@@ -131,6 +131,62 @@ public:
 		}
 	}
 
+	T det2() const
+	{
+		T d = 1;
+		Matrix M = *this;
+
+		std::size_t lead = 0;
+
+		for (std::size_t r = 0; r < rows; ++r) {
+			if (cols <= lead) {
+				goto end;
+			}
+			std::size_t i = r;
+			while (Float<T>::nearly(M.column[lead][i], 0)) {
+				i++;
+				if (rows == i) {
+					i = r;
+					lead++;
+					if (cols == lead) {
+						goto end;
+					}
+				}
+			} /* end while */
+			if (i != r) {
+				M.swapRowVectors(i, r);
+				d = -d;
+			}
+			T factor = M.column[lead][r];
+			M.mulRowVector(r, 1/factor);
+			// NOTE: why not 1/factor?
+			d *= factor;
+			// FIXME: explicitly set column[lead][r] = 1
+			M.column[lead][r] = 1; // HACK
+			for (i = 0; i < rows; ++i) {
+				if (i != r) {
+					T factor = M.column[lead][i];
+					M.subVectorFromRow(i, M.getRowVector(r) * factor);
+					// FIXME: explicitly set zero?
+					M.column[lead][i] = 0; // HACK
+				}
+			} /* end for */
+			lead++;
+		} /* end for */
+end:
+		;
+
+		if (cols != rows) {
+			throw std::domain_error("matrix must be square");
+		}
+
+		for (std::size_t r = 0; r < rows; ++r) {
+			d *= M.getColumnVector(r)[r];
+		}
+
+		return d;
+	}
+
 	// https://en.wikipedia.org/wiki/Row_echelon_form#Reduced_row_echelon_form
 	void toRref()
 	{

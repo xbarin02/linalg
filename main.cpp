@@ -82,7 +82,8 @@ int main()
 
 	std::cout << N.getSubMatrix(0, 1) << "\n";
 
-	std::cout << N.det() << "\n";
+	std::cout << "|N| = " << N.det() << "\n";
+	std::cout << "|N| = " << N.det2() << "\n";
 
 	Vector<float> v1 = { 6, -2, 4 };
 	Vector<float> v2 = { 4, 1, 5 };
@@ -118,7 +119,7 @@ int main()
 	D.addColumnVector(Vector<float>{2, 5, 8});
 	D.addColumnVector(Vector<float>{3, 6, 9});
 	std::cout << D << "\n";
-	std::cout << D.det() << "\n";
+	std::cout << "|D| = " << D.det() << "\n";
 	D.toRref();
 	std::cout << D << "\n";
 
@@ -130,7 +131,8 @@ int main()
 	E = E.getTranspose();
 	std::cout << E << "\n";
 	std::cout << E.getBasis() << "\n";
-	std::cout << E.det() << "\n";
+	std::cout << "|E| = " << E.det() << "\n";
+	std::cout << "|E| = " << E.det2() << "\n";
 	E.toRref();
 	std::cout << E << "\n";
 
@@ -146,7 +148,8 @@ int main()
 	F.addColumnVector(Vector<float>{4, 2, 8});
 	F.addColumnVector(Vector<float>{3, 1, 1});
 	std::cout << F << "\n";
-	std::cout << F.det() << "\n";
+	std::cout << "|F| = " << F.det() << "\n";
+	std::cout << "|F| = " << F.det2() << "\n";
 // 	F.toRref();
 // 	std::cout << F << "\n";
 	Matrix<float> G = F.getInverse();
@@ -236,7 +239,8 @@ int main()
 		E.addColumnVector(Vector<double>{5, 6, 8, 5});
 		E = E.getTranspose();
 		std::cout << E << "\n";
-		std::cout << E.det() << "\n";
+		std::cout << "|E| = " << E.det() << "\n";
+		std::cout << "|E| = " << E.det2() << "\n";
 		std::cout << "rref\n";
 		std::cout << E.getRref() << "\n";
 		std::cout << "inverse\n";
@@ -259,12 +263,25 @@ int main()
 		std::cout << "\nM^{-1} =\n" << N << "\n";
 
 		std::cout << "|M| = " << M.det() << "\n";
+		std::cout << "|M| = " << M.det2() << "\n";
 
 		std::cout << "\nA =\n" << M.getAdjugate() << "\n";
 
 		std::cout << "\n" << 1.f / M.det() * M.getAdjugate() << "\n";
 
 		std::cout << "\nM^{-1} =\n" << M.getInverse2() << "\n";
+	}
+
+	{
+		Matrix<float> M;
+		M.addColumnVector(Vector<float>{1, 1, 2, 3, 4});
+		M.addColumnVector(Vector<float>{2, 1, 0, 6, 3});
+		M.addColumnVector(Vector<float>{3, 0, 2, 1, 1});
+		M.addColumnVector(Vector<float>{1, 4, 5, 0, 2});
+		M.addColumnVector(Vector<float>{0, 8, 2, 2, 2});
+
+		std::cout << "|M| = " << M.det() << "\n";
+		std::cout << "|M| = " << M.det2() << "\n";
 	}
 
 	return 0;
