@@ -290,6 +290,62 @@ end:
 		return B;
 	}
 
+	Vector<T> solve2(Vector<T> b)
+	{
+		if (cols != rows) {
+			throw std::domain_error("matrix must be square");
+		}
+
+		Matrix A = *this;
+		Matrix B;
+		B.addColumnVector(b);
+
+		std::size_t lead = 0;
+
+		for (std::size_t r = 0; r < rows; ++r) {
+			if (cols <= lead) {
+				goto end;
+			}
+			std::size_t i = r;
+			while (Float<T>::nearly(A.column[lead][i], 0)) {
+				i++;
+				if (rows == i) {
+					i = r;
+					lead++;
+					if (cols == lead) {
+						goto end;
+					}
+				}
+			} /* end while */
+			if (i != r) {
+				A.swapRowVectors(i, r);
+				B.swapRowVectors(i, r); // NOTE (1)
+			}
+			T factor = A.column[lead][r];
+			A.mulRowVector(r, 1/factor);
+			B.mulRowVector(r, 1/factor); // NOTE (2)
+			// FIXME: explicitly set A.column[lead][r] = 1
+			A.column[lead][r] = 1; // HACK
+			for (i = 0; i < rows; ++i) {
+				if (i != r) {
+					T factor = A.column[lead][i];
+					A.subVectorFromRow(i, A.getRowVector(r) * factor);
+					B.subVectorFromRow(i, B.getRowVector(r) * factor); // NOTE (3)
+					// FIXME: explicitly set zero?
+					A.column[lead][i] = 0; // HACK
+				}
+			} /* end for */
+			lead++;
+		} /* end for */
+end:
+		A.round();
+		if (A != identity(cols)) {
+			throw std::domain_error("matrix must be invertible");
+		}
+
+		return B.getColumnVector(0);
+	}
+
 	const Vector<T> &getColumnVector(std::size_t c) const
 	{
 		return column[c];

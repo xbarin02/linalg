@@ -293,6 +293,7 @@ int main()
 		std::cout << M << "\n";
 
 		std::cout << M.solve(Vector<float>{1, 11, 21}) << "\n";
+		std::cout << M.solve2(Vector<float>{1, 11, 21}) << "\n";
 	}
 
 	return 0;
