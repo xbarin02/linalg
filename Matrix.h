@@ -651,6 +651,28 @@ end:
 	{
 		return 1.f / det() * getAdjugate();
 	}
+
+	// returns a in Ma = b
+	Vector<T> solve(Vector<T> b)
+	{
+		Vector<T> a(cols);
+
+		T d = det();
+		for (std::size_t c = 0; c < cols; ++c) {
+			Matrix M;
+			for (std::size_t i = 0; i < cols; ++i) {
+				if (c != i) {
+					M.addColumnVector(getColumnVector(i));
+				} else {
+					M.addColumnVector(b);
+				}
+			}
+			T d_i = M.det();
+			a[c] = d_i / d;
+		}
+
+		return a;
+	}
 };
 
 }

@@ -284,5 +284,16 @@ int main()
 		std::cout << "|M| = " << M.det2() << "\n";
 	}
 
+	{
+		Matrix<float> M;
+		M.addColumnVector(Vector<float>{2, 4, 3});
+		M.addColumnVector(Vector<float>{3, 1, -2});
+		M.addColumnVector(Vector<float>{-1, -3, 5});
+
+		std::cout << M << "\n";
+
+		std::cout << M.solve(Vector<float>{1, 11, 21}) << "\n";
+	}
+
 	return 0;
 }
