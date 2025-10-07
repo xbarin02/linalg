@@ -1,0 +1,14 @@
+linalg: linear algebra
+----------------------
+
+The library implements, among others, computation of:
+- determinant (multiple algorithms),
+- reduced row echelon form,
+- matrix inverse (multiple algorithms),
+- solving systems of linear equations (multiple algorithms),
+- gets basis from a matrix,
+- gets null space of a matrix, get orthogonal complement of row space,
+- gets left null space, get orthogonal complement of column space,
+- nullity, rank,
+- projection, and
+- gets adjugate matrix.
