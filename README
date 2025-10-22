@@ -1,5 +1,5 @@
-linalg: linear algebra
-----------------------
+linalg: linear algebra toolkit
+------------------------------
 
 The library implements, among others, computation of:
 - determinant (multiple algorithms),
